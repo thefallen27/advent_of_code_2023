@@ -38,9 +38,9 @@ static std::array<int, 5>
 LabelsAsIntegers(const std::string& hand)
 {
     std::array<int, 5> label_values{};
-    std::transform(hand.begin(), hand.end(), label_values.begin(),
+    std::ranges::transform(hand, label_values.begin(),
         [](char card) {
-            return std::distance(labels.begin(), std::find(labels.begin(), labels.end(), card));
+            return std::distance(labels.begin(), std::ranges::find(labels, card));
         });
 
     return label_values;
